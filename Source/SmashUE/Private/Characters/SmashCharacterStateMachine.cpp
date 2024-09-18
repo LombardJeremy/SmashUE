@@ -3,7 +3,7 @@
 
 #include "Characters/SmashCharacterStateMachine.h"
 
-#include "SmashCharacterState.h"
+#include "Characters/States/SmashCharacterState.h"
 #include "Characters/SmashCharacter.h"
 
 void USmashCharacterStateMachine::Init(ASmashCharacter* InCharacter)
