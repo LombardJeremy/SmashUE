@@ -26,6 +26,11 @@ public:
 	virtual void StateEnter(ESmashCharacterStateID PreviousStateID);
 	virtual void StateExit(ESmashCharacterStateID NextStateID);
 
+	virtual void StateTick(float DeltaTime);
+
+	UPROPERTY(EditAnywhere)
+	TObjectPtr<UAnimMontage> AnimState;
+
 protected:
 	UPROPERTY()
 	TObjectPtr<ASmashCharacter> Character;

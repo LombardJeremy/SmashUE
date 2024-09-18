@@ -21,6 +21,8 @@ public:
 
 	virtual void StateExit(ESmashCharacterStateID NextStateID) override;
 
+	virtual void StateTick(float DeltaTime) override;
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;

@@ -1,18 +1,18 @@
 ﻿// Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Characters/States/SmashCharacterStateWalk.h"
+#include "Characters/States/SmashCharacterStateRun.h"
 #include "Characters/SmashCharacter.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
 
-ESmashCharacterStateID USmashCharacterStateWalk::GetStateID()
+ESmashCharacterStateID USmashCharacterStateRun::GetStateID()
 {
-	return ESmashCharacterStateID::Walk;
+	return ESmashCharacterStateID::Run;
 }
 
 // Sets default values for this component's properties
-USmashCharacterStateWalk::USmashCharacterStateWalk()
+USmashCharacterStateRun::USmashCharacterStateRun()
 {
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
@@ -21,7 +21,7 @@ USmashCharacterStateWalk::USmashCharacterStateWalk()
 	// ...
 }
 
-void USmashCharacterStateWalk::StateEnter(ESmashCharacterStateID PreviousStateID)
+void USmashCharacterStateRun::StateEnter(ESmashCharacterStateID PreviousStateID)
 {
 	Super::StateEnter(PreviousStateID);
 	
@@ -35,7 +35,7 @@ void USmashCharacterStateWalk::StateEnter(ESmashCharacterStateID PreviousStateID
 	);
 }
 
-void USmashCharacterStateWalk::StateExit(ESmashCharacterStateID NextStateID)
+void USmashCharacterStateRun::StateExit(ESmashCharacterStateID NextStateID)
 {
 	Super::StateExit(NextStateID);
 
@@ -47,7 +47,7 @@ void USmashCharacterStateWalk::StateExit(ESmashCharacterStateID NextStateID)
 	);
 }
 
-void USmashCharacterStateWalk::StateTick(float DeltaTime)
+void USmashCharacterStateRun::StateTick(float DeltaTime)
 {
 	Super::StateTick(DeltaTime);
 	
@@ -63,7 +63,7 @@ void USmashCharacterStateWalk::StateTick(float DeltaTime)
 
 
 // Called when the game starts
-void USmashCharacterStateWalk::BeginPlay()
+void USmashCharacterStateRun::BeginPlay()
 {
 	Super::BeginPlay();
 
@@ -73,7 +73,7 @@ void USmashCharacterStateWalk::BeginPlay()
 
 
 // Called every frame
-void USmashCharacterStateWalk::TickComponent(float DeltaTime, ELevelTick TickType,
+void USmashCharacterStateRun::TickComponent(float DeltaTime, ELevelTick TickType,
                                              FActorComponentTickFunction* ThisTickFunction)
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);

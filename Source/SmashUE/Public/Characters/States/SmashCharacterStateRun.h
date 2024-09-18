@@ -4,18 +4,18 @@
 
 #include "CoreMinimal.h"
 #include "Characters/States/SmashCharacterState.h"
-#include "SmashCharacterStateWalk.generated.h"
+#include "SmashCharacterStateRun.generated.h"
 
 
 UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
-class SMASHUE_API USmashCharacterStateWalk : public USmashCharacterState
+class SMASHUE_API USmashCharacterStateRun : public USmashCharacterState
 {
 	GENERATED_BODY()
 
 public:
 	virtual ESmashCharacterStateID GetStateID() override;
 	// Sets default values for this component's properties
-	USmashCharacterStateWalk();
+	USmashCharacterStateRun();
 
 	virtual void StateEnter(ESmashCharacterStateID PreviousStateID) override;
 

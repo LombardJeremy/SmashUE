@@ -2,8 +2,8 @@
 
 
 #include "Characters/States/SmashCharacterState.h"
-
 #include "Characters/SmashCharacterStateMachine.h"
+#include "Characters/SmashCharacter.h"
 
 
 // Sets default values for this component's properties
@@ -35,9 +35,14 @@ void USmashCharacterState::StateInit(USmashCharacterStateMachine* InStateMachine
 
 void USmashCharacterState::StateEnter(ESmashCharacterStateID PreviousStateID)
 {
+	Character->PlayAnimMontage(AnimState);
 }
 
 void USmashCharacterState::StateExit(ESmashCharacterStateID NextStateID)
+{
+}
+
+void USmashCharacterState::StateTick(float DeltaTime)
 {
 }
 
