@@ -3,10 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Arena/ArenaSettings.h"
 #include "Engine/DeveloperSettings.h"
+#include "InputMappingContext.h"
 #include "SmashCharacterSettings.generated.h"
 
-class UInputMappingContext;
+
 class USmashCharacterInputData;
 /**
  * 

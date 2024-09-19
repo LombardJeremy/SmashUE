@@ -3,11 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "EnhancedInputSubsystemInterface.h"
 #include "GameFramework/Character.h"
 #include "SmashCharacter.generated.h"
 
 class USmashCharacterInputData;
-class UInputMappingContext;
 class USmashCharacterStateMachine;
 
 UCLASS()
