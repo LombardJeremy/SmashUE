@@ -22,30 +22,27 @@ USmashCharacterStateWalk::USmashCharacterStateWalk()
 	// ...
 }
 
+void USmashCharacterStateWalk::OnInputMoveXFast(float InputMoveX)
+{
+	StateMachine->ChangeState(ESmashCharacterStateID::Run);
+}
+
 void USmashCharacterStateWalk::StateEnter(ESmashCharacterStateID PreviousStateID)
 {
 	Super::StateEnter(PreviousStateID);
 	
 	Character->GetCharacterMovement()->MaxWalkSpeed = MovementMaxSpeed;
 
-	GEngine->AddOnScreenDebugMessage(
-	-1,
-	3.f,
-	FColor::Cyan,
-	TEXT("Enter StateWalk")
-	);
+	Character->InputMoveXFastEvent.AddDynamic(this,&USmashCharacterStateWalk::OnInputMoveXFast);
+
 }
 
 void USmashCharacterStateWalk::StateExit(ESmashCharacterStateID NextStateID)
 {
 	Super::StateExit(NextStateID);
 
-	GEngine->AddOnScreenDebugMessage(
-	-1,
-	3.f,
-	FColor::Red,
-	TEXT("Exit StateWalk")
-	);
+	Character->InputMoveXFastEvent.RemoveDynamic(this,&USmashCharacterStateWalk::OnInputMoveXFast);
+
 }
 
 void USmashCharacterStateWalk::StateTick(float DeltaTime)
@@ -61,7 +58,7 @@ void USmashCharacterStateWalk::StateTick(float DeltaTime)
 		TEXT("Tick StateWalk")
 		);
 
-	if(FMath::Abs(Character->GetInputMoveX()) < 0.1f)
+	if(FMath::Abs(Character->GetInputMoveX()) < InputMoveXTreshold)
 	{
 		StateMachine->ChangeState(ESmashCharacterStateID::Idle);
 	}

@@ -4,6 +4,7 @@
 #include "Characters/States/SmashCharacterState.h"
 #include "Characters/SmashCharacterStateMachine.h"
 #include "Characters/SmashCharacter.h"
+#include "Characters/SmashCharacterSettings.h"
 
 
 // Sets default values for this component's properties
@@ -23,6 +24,7 @@ ESmashCharacterStateID USmashCharacterState::GetStateID()
 
 void USmashCharacterState::StateInit(USmashCharacterStateMachine* InStateMachine)
 {
+	CharacterSettings = GetDefault<USmashCharacterSettings>();
 	StateMachine = InStateMachine;
 	Character = InStateMachine->GetCharacter();
 	GEngine->AddOnScreenDebugMessage(
@@ -44,5 +46,10 @@ void USmashCharacterState::StateExit(ESmashCharacterStateID NextStateID)
 
 void USmashCharacterState::StateTick(float DeltaTime)
 {
+}
+
+float USmashCharacterState::HaveInputMoveXTreshold()
+{
+	return Character->InputMoveXTreshold;
 }
 

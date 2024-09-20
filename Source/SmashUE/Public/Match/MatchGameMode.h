@@ -29,6 +29,9 @@ private:
 	USmashCharacterInputData* LoadInputDataFromConfig();
 
 	UInputMappingContext* LoadInputMappingContextFromConfig();
+
+	const float LoadMoveXTreshold(); 
+	
 	
 	void FindPlayerStartActorsInArena(TArray<AArenaPlayerStart*>& ResultsActor);
 

@@ -47,6 +47,13 @@ UInputMappingContext* AMatchGameMode::LoadInputMappingContextFromConfig()
 	return CharacterSettings->InputMappingContext.LoadSynchronous();
 }
 
+const float AMatchGameMode::LoadMoveXTreshold()
+{
+	const USmashCharacterSettings* CharacterSettings = GetDefault<USmashCharacterSettings>();
+	if(CharacterSettings == nullptr) return 0.f;
+	return CharacterSettings->InputMoveXTreshold;
+}
+
 void AMatchGameMode::FindPlayerStartActorsInArena(TArray<AArenaPlayerStart*>& ResultsActor)
 {
 	TArray<AActor*> FoundActors;
@@ -65,6 +72,7 @@ void AMatchGameMode::SpawnCharacter(const TArray<AArenaPlayerStart*>& SpawnPoint
 {
 	USmashCharacterInputData* InputData = LoadInputDataFromConfig();
 	UInputMappingContext* InputMappingContext = LoadInputMappingContextFromConfig();
+	const float InputMoveXTreshold = LoadMoveXTreshold();
 	
 	for(AArenaPlayerStart* SpawnPoint : SpawnPoints)
 	{
@@ -80,6 +88,7 @@ void AMatchGameMode::SpawnCharacter(const TArray<AArenaPlayerStart*>& SpawnPoint
 		if(NewCharacter == nullptr) continue;
 		NewCharacter->InputData = InputData;
 		NewCharacter->InputMappingContext = InputMappingContext;
+		NewCharacter->InputMoveXTreshold = InputMoveXTreshold;
 		NewCharacter->AutoPossessPlayer = SpawnPoint->AutoReceiveInput;
 		NewCharacter->SetOrientX(SpawnPoint->GetStartOrientX());
 		NewCharacter->FinishSpawning(SpawnPoint->GetTransform());

@@ -7,6 +7,7 @@
 #include "Components/ActorComponent.h"
 #include "SmashCharacterState.generated.h"
 
+class USmashCharacterSettings;
 class ASmashCharacter;
 class USmashCharacterStateMachine;
 
@@ -31,11 +32,16 @@ public:
 	UPROPERTY(EditAnywhere)
 	TObjectPtr<UAnimMontage> AnimState;
 
+	float InputMoveXTreshold;
+	float HaveInputMoveXTreshold();
+
+	UPROPERTY()
+	const USmashCharacterSettings* CharacterSettings;
+
 protected:
 	UPROPERTY()
 	TObjectPtr<ASmashCharacter> Character;
 
 	UPROPERTY()
-	TObjectPtr<USmashCharacterStateMachine> StateMachine;
-	
+	TObjectPtr<USmashCharacterStateMachine> StateMachine;	
 };

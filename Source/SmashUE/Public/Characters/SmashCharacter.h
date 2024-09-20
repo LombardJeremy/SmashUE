@@ -74,15 +74,22 @@ public:
 	UPROPERTY()
 	TObjectPtr<USmashCharacterInputData> InputData;
 
+	float InputMoveXTreshold;
+
 protected:
 	void SetupMappingContextIntoController() const;
 
 #pragma endregion
 
-#pragma region Input Move
+#pragma region Input Move X
+
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FInputMoveXEvent, float, InputMoveX);
 
 public:
 	float GetInputMoveX() const;
+
+	UPROPERTY()
+	FInputMoveXEvent InputMoveXFastEvent;
 
 protected:
 	UPROPERTY()
@@ -90,6 +97,7 @@ protected:
 
 private:
 	void OnInputMoveX(const FInputActionValue& InputActionValue);
+	void OnInputMoveFastX(const FInputActionValue& InputActionValue);
 	void BindInputMoveXAxisAndActions(UEnhancedInputComponent* EnhancedInputComponent);
 	
 #pragma endregion 
