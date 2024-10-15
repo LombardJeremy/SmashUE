@@ -3,12 +3,14 @@
 
 #include "Match/MatchGameMode.h"
 
+#include "LocalMultiplayerSettings.h"
 #include "Arena/ArenaPlayerStart.h"
 #include "Arena/ArenaSettings.h"
 #include "Characters/SmashCharacter.h"
 #include "Kismet/GameplayStatics.h"
 #include "Characters/SmashCharacterInputData.h"
 #include "Characters/SmashCharacterSettings.h"
+#include "../../../LocalMultiplayer/Public/LocalMultiplayerSettings.h"
 
 
 void AMatchGameMode::BeginPlay()
@@ -73,7 +75,8 @@ void AMatchGameMode::SpawnCharacter(const TArray<AArenaPlayerStart*>& SpawnPoint
 	USmashCharacterInputData* InputData = LoadInputDataFromConfig();
 	UInputMappingContext* InputMappingContext = LoadInputMappingContextFromConfig();
 	const float InputMoveXTreshold = LoadMoveXTreshold();
-	
+
+	const ULocalMultiplayerSettings* Settings = GetDefault<ULocalMultiplayerSettings>();
 	for(AArenaPlayerStart* SpawnPoint : SpawnPoints)
 	{
 		EAutoReceiveInput::Type InputType = SpawnPoint->AutoReceiveInput.GetValue();

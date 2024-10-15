@@ -13,16 +13,6 @@ ESmashCharacterStateID USmashCharacterStateRun::GetStateID()
 	return ESmashCharacterStateID::Run;
 }
 
-// Sets default values for this component's properties
-USmashCharacterStateRun::USmashCharacterStateRun()
-{
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = true;
-
-	// ...
-}
-
 void USmashCharacterStateRun::StateEnter(ESmashCharacterStateID PreviousStateID)
 {
 	Super::StateEnter(PreviousStateID);
@@ -64,21 +54,4 @@ void USmashCharacterStateRun::StateTick(float DeltaTime)
 	}	
 }
 
-
-// Called when the game starts
-void USmashCharacterStateRun::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-
-// Called every frame
-void USmashCharacterStateRun::TickComponent(float DeltaTime, ELevelTick TickType,
-                                             FActorComponentTickFunction* ThisTickFunction)
-{
-	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
-
-	// ...
-}
 
